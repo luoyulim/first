@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+    xmlns:p="http://www.springframework.org/schema/p"
+    xmlns:context="http://www.springframework.org/schema/context"
+    xmlns:mvc="http://www.springframework.org/schema/mvc"
+    xsi:schemaLocation="http://www.springframework.org/schema/beans 
+        http://www.springframework.org/schema/beans/spring-beans-4.0.xsd
+        http://www.springframework.org/schema/mvc 
+        http://www.springframework.org/schema/mvc/spring-mvc-4.0.xsd
+        http://www.springframework.org/schema/context 
+        http://www.springframework.org/schema/context/spring-context-4.0.xsd">
+        
+        <!-- 加载配置文件 -->
+	<context:property-placeholder location="classpath:resource.properties"/>
+	  <!-- 配置指定包下的组件扫描 -->  
+	<context:component-scan base-package="cn.itcast.controller"/>
+	 <!-- 配置视图解析器 -->
+    <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+    	<!-- 前缀 -->
+    	<property name="prefix" value="/WEB-INF/jsp/" />
+    	<!-- 后缀 -->
+    	<property name="suffix" value=".jsp" />
+    </bean>
+    <!--企业中的配置，注解驱动
+    	作用：帮助我们显式配置当前Spring版本的最新的注解形式的处理器映射器和处理器适配器 -->
+    <!-- <mvc:annotation-driven conversion-service="conversionService"/>  -->    
+    <mvc:annotation-driven />     
+	
+	
+</beans>
